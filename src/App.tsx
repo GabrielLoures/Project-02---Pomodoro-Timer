@@ -10,8 +10,7 @@ export function App() {
       <BrowserRouter>
         <Router />
       </BrowserRouter>
-      <GlobalStyle />{' '}
-      {/* tanto faz a posição do GlobalStyle dentro da estrutura do return */}
+      <GlobalStyle />
     </ThemeProvider>
   )
 }
