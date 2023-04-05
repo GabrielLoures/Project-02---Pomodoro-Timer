@@ -9,7 +9,6 @@ export function Countdown() {
     activeCycleId,
     amountSecondsPassed,
     markCurrentCycleAsFinished,
-    resetActiveCycleId,
     setSecondsPassed,
   } = useContext(CyclesContext)
   // estado para armazenar quantos segundos passaram
@@ -37,14 +36,13 @@ export function Countdown() {
       interval = setInterval(() => {
         const secondsDifference = differenceInSeconds(
           new Date(),
-          activeCycle.startDate,
+          new Date(activeCycle.startDate),
         )
 
         if (secondsDifference >= totalSeconds) {
           markCurrentCycleAsFinished()
 
           setSecondsPassed(totalSeconds)
-          resetActiveCycleId()
 
           clearInterval(interval) // para de executar o setInterval quando o cronômetro chegar a 0
         } else {
@@ -61,7 +59,6 @@ export function Countdown() {
     totalSeconds,
     activeCycleId,
     markCurrentCycleAsFinished,
-    resetActiveCycleId,
     setSecondsPassed,
   ]) // sempre que usamos uma variável externa ao useEffect, temos que utilizá-la como dependência
 
